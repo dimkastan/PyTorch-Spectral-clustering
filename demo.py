@@ -41,16 +41,16 @@ def similarity_matrix(mat):
     return D.sqrt()
 
 # (x - y)^2 = x^2 - 2*x*y + y^2
-def diffusion_distance(mat, sigma=4, alpha=0.5):
+def diffusion_distance(mat, sigma=8, alpha=0.5):
     D =distance_matrix(mat);
     K = torch.exp(-(torch.pow(torch.div(D,sigma) ,2))) # Kernel
     p = K.sum(1)
-    K1 = K/(torch.pow(p.unsqueeze(1)*p,alpha)) # alpha=>1 approx. Laplace–Beltrami operator, 0.5 approximates Fokker-Planck diffusion.
+    K1 = K/(torch.pow(p.unsqueeze(1)*p,alpha)) # alpha = 1 Laplace Beltrami, 0.5 Fokker Planck diffusion.
     v = torch.sqrt(K1.sum(1))
     A = K1/(v.unsqueeze(1)*v)
-    [u,s,v]=torch.svd(d)
+    [u,s,v]=torch.svd(D)
     u=u/u[:,0].unsqueeze(1)    
-    return A,u
+    return K1,u
  
 # Generate Clusters
 mat = torch.cat([torch.randn(500,2)+torch.Tensor([-2,-3]),   torch.randn(500,2)+torch.Tensor([2,1])])
@@ -60,7 +60,7 @@ plt.scatter(mat[:,0].numpy(),mat[:,1].numpy())
 plt.show()
 
 ##-------------------------------------------
-#         Spectral analysis on similarity matrix
+#         Spectral analysis on distance matrix
 ##-------------------------------------------
 d= distance_matrix(mat);
 
@@ -92,7 +92,7 @@ plt.title('Sorted Matrix');
 
 plt.figure(4)
 plt.plot(torch.sort(u[:,1 ])[0].numpy())
-plt.show(block=False)
+plt.show(block=True)
 plt.title("Sorted Eigenvector")
 
  
@@ -100,7 +100,7 @@ plt.title("Sorted Eigenvector")
 ##-------------------------------------------
 #          Diffusion map
 ##-------------------------------------------
-d,u= diffusion_distance(mat,4,0.5)
+[d,u]= diffusion_distance(mat,8,0.5)
 
 plt.figure(1)
 plt.imshow(d.numpy())
@@ -130,6 +130,6 @@ plt.title('Sorted Matrix');
 
 plt.figure(4)
 plt.plot(torch.sort(u[:,1 ])[0].numpy())
-plt.show(block=False)
+plt.show(block=True)
 plt.title("Sorted Eigenvector")
  
