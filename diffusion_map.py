@@ -87,16 +87,29 @@ min_d = d.min();
 max_d = d.max();
 
 assert min_d ==0 , "Error in distance matrix"
- 
-
-random_point = min(torch.round(torch.abs(torch.randn(1)/2.0)*len(mat))[0],len(mat));
-
 values = u[:,1 ] 
 norm  = colors.Normalize(vmin=values.min(), vmax=values.max())
-for t in range(0,10,1):
+
+scalarMap = cm.ScalarMappable( norm=norm , cmap=color_map)
+random_point = min(torch.round(torch.abs(torch.randn(1)/2.0)*len(mat))[0],len(mat));
+
+plt.figure()
+plt.scatter(mat[:,0].numpy(),mat[:,1].numpy())
+for i in range(len(data)):
+    color = scalarMap.to_rgba(d[int(random_point),i]) # take the distance from one point
+    plt.scatter(mat[i,0],mat[i,1], color=color)
+    plt.scatter(mat[int(random_point),0],mat[int(random_point),1], color=[0.0 ,0.0,0.0], marker="*")  
+    plt.title('distance from point at time:'+str(0))
+    
+plt.show(block=False)
+
+
+
+
+for t in range(1,10,1):
     plt.figure();
     values = u[:,1 ]*(s[1]**t) 
-    scalarMap = cm.ScalarMappable( norm=norm , cmap=color_map)
+    
     plt.scatter(mat[:,0].numpy(),mat[:,1].numpy())
     for i in range(len(values)):
         color = scalarMap.to_rgba(values[i])
