@@ -96,40 +96,4 @@ plt.show(block=True)
 plt.title("Sorted Eigenvector")
 
  
-
-##-------------------------------------------
-#          Diffusion map
-##-------------------------------------------
-[d,u]= diffusion_distance(mat,8,0.5)
-
-plt.figure(1)
-plt.imshow(d.numpy())
-plt.title('Distance Matrix-Before Ordering')
-plt.show(block=False)
-
-
-
-
-colors = cm.rainbow(np.linspace(0, 1, mat.size(0)))
-[val, ind] = torch.sort(u[:,1] )
-plt.figure(2)
-
-sorted_u  = u[ind,:]
- 
-for x, color in zip(sorted_u.numpy(), colors):
-    plt.scatter(x[1],x[2], color=color)
-
-plt.title('Eigenvector-Mapping')
-plt.show(block=False)
-
-
-plt.figure(3)
-plt.imshow(d[[ind]][:,ind].numpy())
-plt.show(block=False)
-plt.title('Sorted Matrix');
-
-plt.figure(4)
-plt.plot(torch.sort(u[:,1 ])[0].numpy())
-plt.show(block=True)
-plt.title("Sorted Eigenvector")
  
