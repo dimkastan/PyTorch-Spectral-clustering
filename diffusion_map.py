@@ -18,23 +18,14 @@ import matplotlib.cm as cm
 import matplotlib as mpl
 
 
-jet =  plt.get_cmap('jet')
+color_map =  plt.get_cmap('jet')
 
-
-# adopted from Fransisco Massa's comment
-# (x - y)^2 = x^2 - 2*x*y + y^2
-def distance_matrix(mat):
-    # get the product x * y
-    # here, y = x.t()
-    r = torch.mm(mat, mat.t())
-    # get the diagonal elements
-    diag = r.diag().unsqueeze(0)
-    diag = diag.expand_as(r)
-    # compute the distance matrix
-    D = diag + diag.t() - 2*r
-    return D.sqrt()
  
-# (x - y)^2 = x^2 - 2*x*y + y^2
+def distance_matrix(mat):
+    d= ((mat.unsqueeze (0)-mat.unsqueeze (1))**2).sum (2)**0.5
+    return d
+
+ 
 def diffusion_distance(mat, sigma=8.0, alpha=1.0):
     D =distance_matrix(mat);
     K = torch.exp(-(torch.pow(torch.div(D,sigma) ,2))) # Kernel
@@ -58,9 +49,9 @@ plt.pause(1)
 ##-------------------------------------------
 #          Diffusion map
 ##-------------------------------------------
-[d,u,s]= diffusion_distance(mat,2.0,1.0)
+[d,u,s]= diffusion_distance(mat,4.0,0.5)
 plt.figure(1)
-plt.imshow(d.numpy())
+plt.imshow(d.numpy(),cmap= color_map)
 plt.title('Distance Matrix-Before Ordering')
 plt.show(block=False)
 
@@ -77,7 +68,7 @@ plt.show(block=False)
 plt.pause(0.1)
 
 plt.figure(3)
-plt.imshow(d[[ind]][:,ind].numpy())
+plt.imshow(d[[ind]][:,ind].numpy(),cmap= color_map)
 plt.show(block=False)
 plt.title('Sorted Matrix');
 plt.pause(0.1)
@@ -95,14 +86,17 @@ d=distance_matrix(data)
 min_d = d.min();
 max_d = d.max();
 
+assert min_d ==0 , "Error in distance matrix"
  
+
+random_point = min(torch.round(torch.abs(torch.randn(1)/2.0)*len(mat))[0],len(mat));
 
 values = u[:,1 ] 
 norm  = colors.Normalize(vmin=values.min(), vmax=values.max())
-for t in range(0,32,4):
+for t in range(0,10,1):
     plt.figure();
     values = u[:,1 ]*(s[1]**t) 
-    scalarMap = cm.ScalarMappable( norm=norm , cmap=jet)
+    scalarMap = cm.ScalarMappable( norm=norm , cmap=color_map)
     plt.scatter(mat[:,0].numpy(),mat[:,1].numpy())
     for i in range(len(values)):
         color = scalarMap.to_rgba(values[i])
@@ -110,7 +104,24 @@ for t in range(0,32,4):
 
     plt.show(block=False)
     plt.title("Second Eigenvector at time:"+str(t))
-    plt.pause(0.5)    
+    plt.pause(0.1) 
+    p = torch.pow(s,t)
+    data =   u[:,1:3]*(p[1:3].expand_as(u[:,1:3]))
+    d=distance_matrix(data)
+    plt.figure();
+    plt.imshow(d[[ind]][:,ind].numpy(),cmap= color_map, vmin= 0, vmax=max_d)
+    plt.title('distance matrix at time:'+str(t))    
+    plt.show(block=False)
+    # draw the distances from one point
+    plt.figure()
+    plt.scatter(mat[:,0].numpy(),mat[:,1].numpy())
+    for i in range(len(data)):
+        color = scalarMap.to_rgba(d[int(random_point),i]) # take the distance from one point
+        plt.scatter(mat[i,0],mat[i,1], color=color)
+
+    plt.scatter(mat[int(random_point),0],mat[int(random_point),1], color=[0.0 ,0.0,0.0], marker="*")  
+    plt.title('distance from point at time:'+str(t))
+    plt.show(block=False)
     raw_input("Press Enter to continue..") 
 
 
