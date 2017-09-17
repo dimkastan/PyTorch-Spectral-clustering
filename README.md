@@ -14,6 +14,16 @@ At the moment, I have added Diffusion Maps [1] and I am working on the methods p
 Except from some examples based on 2-D Gaussian distributed clusters I will also add examples with face, food, imagenet categories etc.
 <br />
 
+
+## Prerequisites
+In order to run these examples you need to have Pytorch installed in your system. I worked with Anaconda2 and Pytorch:<br />
+
+    pytorch                   0.2.0           py27hc03bea1_4cu80  [cuda80]  soumith
+<br />
+(you can verify your pytorch installation by running 
+
+    conda list | grep pytorch
+
 Feel free to contact me for suggestions, comments etc.
 
 ### References
