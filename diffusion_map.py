@@ -1,8 +1,11 @@
 """
   Implementing various dimensionality reduction methods with PyTorch Tensors
 
-  Diffusion Maps, Laplacian EigenMaps, stc
+  Here I am using PyTorch to implement Diffusion Map method.
+  
+  [1]  Diffusion maps, RR Coifman, S Lafon, Applied and computational harmonic analysis 21 (1), 5-30 
 
+ 
 
   Under development. Please use with caution.
 
