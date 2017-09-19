@@ -1,11 +1,25 @@
 # PyTorch-Spectral-clustering
 [Under development]- Implementation of various methods for dimensionality reduction and spectral clustering with PyTorch and Matlab equivalent code.
 <br />
+Sample Images from PyTorch
+<br />
+<p float="left">
+<img src="PytorchInputData.png" alt="Input Data" title="Input Data" width="240" height="240"/>
+<img src="PytorchFiedlerVector.png" alt="Fiedler Vector" title="Fiedler Vector" width="240" height="240"/>
+<img src="Pytorchclusters.png" alt="Clusters" title="Clusters" width="240" height="240"/>
+</p>
+<br />
+<p>
+Sample Images from Matlab equivalent
+</p>
+<br />
 <p float="left">
 <img src="InputData.png" alt="Input Data" title="Input Data" width="280" height="240"/>
 <img src="FiedlerVector.png" alt="Fiedler Vector" title="Fiedler Vector" width="280" height="240"/>
 <img src="Clusters.png" alt="Clusters" title="Clusters" width="280" height="240"/>
 </p>
+
+
 <br/><br/> 
  
 <br />
