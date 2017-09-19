@@ -1,7 +1,7 @@
 # PyTorch-Spectral-clustering
 [Under development]- Implementation of various methods for dimensionality reduction and spectral clustering with PyTorch and Matlab equivalent code.
 <br />
-Sample Images from PyTorch
+Sample Images from PyTorch code
 <br />
 <p float="left">
 <img src="PytorchInputData.png" alt="Input Data" title="Input Data" width="240" height="240"/>
@@ -10,7 +10,7 @@ Sample Images from PyTorch
 </p>
 <br />
 <p>
-Sample Images from Matlab equivalent
+Sample Images from Matlab equivalent code
 </p>
 <br />
 <p float="left">
