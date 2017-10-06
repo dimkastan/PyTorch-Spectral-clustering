@@ -8,18 +8,20 @@ Sample Images from PyTorch code
 <img src="PytorchFiedlerVector.png" alt="Fiedler Vector" title="Fiedler Vector" width="240" height="240"/>
 <img src="Pytorchclusters.png" alt="Clusters" title="Clusters" width="240" height="240"/>
 </p>
+
 <br />
 Drawing the second eigenvector on data (diffusion map)
-<p>
 <img src="EigenvectorOnData.png" alt="Diffusion Map- Second Eigenvector on data" title="Diffusion Map, Second Eigenvector" width="240" height="240"/>
 <br>
 Drawing the point-wise diffusion distances 
  <img src="PointDistance.png" alt="Diffusion Map- point-wise distances" title="Diffusion Map, distances" width="240" height="240"/>
+
 <br>
 Sorting matrix
+<br>
  <p float="left">
-<img src="DistanceMatrixBeforeSorting.png" alt="Unsorted PairWiseDistance Matrix" title="Unsorted PairWiseDistance Matrix" width="240" height="240"/>
-<img src="Sorted_matrix.png" alt="Sorted Distance Matrix" title="Sorted Distance Matrix" width="240" height="240"/>
+<img src="DistanceMatrixBeforeSorting.png" alt="Unsorted PairWiseDistance Matrix" title="Unsorted PairWiseDistance Matrix" width="360" height="360"/>
+<img src="Sorted_matrix.png" alt="Sorted Distance Matrix" title="Sorted Distance Matrix" width="360" height="360"/>
  
 </p>
 
