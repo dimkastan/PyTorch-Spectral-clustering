@@ -9,16 +9,19 @@ Sample Images from PyTorch code
 <img src="Pytorchclusters.png" alt="Clusters" title="Clusters" width="240" height="240"/>
 </p>
 <br />
+Drawing the second eigenvector on data (diffusion map)
 <p>
-Sample Images from Matlab equivalent code
+<img src="EigenvectorOnData.png" alt="Diffusion Map- Second Eigenvector on data" title="Diffusion Map, Second Eigenvector" width="240" height="240"/>
+<br>
+Drawing the point-wise diffusion distances 
+ <img src="PointDistance.png" alt="Diffusion Map- point-wise distances" title="Diffusion Map, distances" width="240" height="240"/>
+<br>
+Sorting matrix
+ <p float="left">
+<img src="DistanceMatrixBeforeSorting.png" alt="Unsorted PairWiseDistance Matrix" title="Unsorted PairWiseDistance Matrix" width="240" height="240"/>
+<img src="Sorted_matrix.png" alt="Sorted Distance Matrix" title="Sorted Distance Matrix" width="240" height="240"/>
+ 
 </p>
-<br />
-<p float="left">
-<img src="InputData.png" alt="Input Data" title="Input Data" width="280" height="240"/>
-<img src="FiedlerVector.png" alt="Fiedler Vector" title="Fiedler Vector" width="280" height="240"/>
-<img src="Clusters.png" alt="Clusters" title="Clusters" width="280" height="240"/>
-</p>
-
 
 <br/><br/> 
  
