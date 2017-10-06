@@ -20,8 +20,8 @@ Drawing the point-wise diffusion distances
 Sorting matrix
 <br>
  <p float="left">
-<img src="DistanceMatrixBeforeSorting.png" alt="Unsorted PairWiseDistance Matrix" title="Unsorted PairWiseDistance Matrix" width="360" height="360"/>
-<img src="Sorted_matrix.png" alt="Sorted Distance Matrix" title="Sorted Distance Matrix" width="360" height="360"/>
+<img src="DistanceMatrixBeforeSorting.png" alt="Unsorted PairWiseDistance Matrix" title="Unsorted PairWiseDistance Matrix" width="360" height="300"/>
+<img src="Sorted_matrix.png" alt="Sorted Distance Matrix" title="Sorted Distance Matrix" width="360" height="300"/>
  
 </p>
 
